@@ -5,7 +5,7 @@ document.getElementById('map').style.height = '100vh';
 const options: LoaderOptions = {
   libraries: ["places"]
 }
-const loader = new Loader('AIzaSyB958cLfVvFD0H3wCpzpUUTHKc7xm-S9xI', options);
+const loader = new Loader('', options);
 
 const google = await loader.load();
 
@@ -32,6 +32,8 @@ const findPlaces = () => {
                title:results[i].name
            })
           }
+          map.setCenter(results[0].geometry.location)
+
         }
       });
       // loop through results
