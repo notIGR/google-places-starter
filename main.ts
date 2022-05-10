@@ -25,6 +25,15 @@ const findPlaces = () => {
 
   service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for(let i = 0; i < results.length; i++) {
+           new google.maps.Marker({
+               position: results[i].geometry.location,
+               map,
+               title:results[i].name
+           })
+          }
+        }
+      });
       // loop through results
       // create new class instance of new google.maps.Marker
       // position: myLatLng, -> You can get from the results[i].geometry.location
@@ -34,8 +43,7 @@ const findPlaces = () => {
       // methods to call on map like map.whatever()
       // center the map on one of the markers
       // zoom in
-    }
-  });
+  
 
 }
 findPlaces();
